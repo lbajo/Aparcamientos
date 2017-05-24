@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Aparcamientos para residentes en Madrid</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--  <link rel="stylesheet" href="jquery-ui.min.css"> -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+  <link rel="stylesheet" href="aparcamientos.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+  <div id="page-wrapper">
+    <div id="header-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="12u">
+            <header id="header">
+              <h1><a href="#principal" id="logo">Aparcamientos</a></h1>
+                <nav id="nav">
+                    <a data-toggle="tab" href="#principal">Principal</a>
+                    <a data-toggle="tab" href="#colecciones">Gestión de colecciones</a>
+                    <a data-toggle="tab" href="#instalaciones">Gestión de instalaciones</a>
+                </nav>
+            </header>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content">
+      <div id="principal" class="tab-pane fade in active">
+        <div id="banner-wrapper">
+            <div class="container">
+              <div id="banner" type="image">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+        <div id="main">
+        <div class="container">
+          <div class="row main-row">
+            <div class="4u 12u(mobile)">
+
+              <section>
+                <h2>Listado de aparcamientos</h2>
+                <p id="info"> 
+                  Pulse sobre el botón <em>"mostrar aparcamientos"</em> para ver la lista de aparcamientos disponibles en la zona de Madrid.
+                </p>
+                <div id="list"></div>
+                <a class="button" id="ins">mostrar aparcamientos</a>
+                
+              </section>
+
+            </div>
+            <div class="8u 12u(mobile)">
+
+              <section>
+                <h2>Descripción</h2>
+                <h3 id="n_apar"></h3>
+                <div id="desc"></div>
+              </section>
+
+                <div class="row main-row">
+                  <div class="4u 12u(mobile)">
+                    <section>
+                      <h2>Fotografías del lugar</h2>
+
+                      <div id="carousel" class="carousel slide" data-ride="carousel">
+                        
+                        <ol class="carousel-indicators">
+                          <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#carousel" data-slide-to="1"></li>
+                          <li data-target="#carousel" data-slide-to="2"></li>
+                          <li data-target="#carousel" data-slide-to="3"></li>
+                          <li data-target="#carousel" data-slide-to="4"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                          <div class="item active" id="img0">
+                            <img id="img0">
+                          </div>
+
+                          <div class="item" id="img1">
+                            <img id="img1">
+                          </div>
+
+                          <div class="item" id="img2">
+                            <img id="img2">
+                          </div>
+
+                          <div class="item" id="img3">
+                            <img id="img3">
+                          </div>
+
+                          <div class="item" id="img4">
+                            <img id="img4">
+                          </div>
+
+                        </div>
+                        
+                        <a class="left carousel-control" href="#carousel" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                    </section>
+                  </div>
+                  <div class="4u 12u(mobile)">
+                    <section>
+                      <h2>Colecciones</h2>
+                      <div id="colec"><h3 id="n_c"></h3><p></p></div>
+
+                    </section>
+                  </div>
+                </div>
+
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+      </div>
+
+      <div id="colecciones" class="tab-pane fade">
+        <div id="main">
+          <div class="container">
+            <div class="row main-row">
+              <div class="4u 12u(mobile)">
+
+                <section class="left-content">
+                  <h2>Listado de colecciones</h2>
+                  <div id="list_colec"></div>
+                </section>
+
+              </div>
+              <div class="4u 12u(mobile)">
+
+                <section class="left-content">
+                  <div>
+                    <h2>Nueva colección</h2>
+                    <input id="new_colecc" type="text" />
+                    <a class="button" id="add">Crear</a>
+                  </div>
+                  <p></p>
+                  <div>
+                    <h2>Información de la colección seleccionada</h2>
+                    <h3>Nombre:</h3>
+                    <h3 id="name_colec"></h3>
+                    <h3>Listado de aparcamientos:</h3>
+                      <div id="arrastrar" ><p></p></div>
+
+                  </div>
+                </section>
+
+              </div>
+              <div class="4u 12u(mobile)">
+
+                <section>
+                  <h2>Listado de aparcamientos</h2>
+                  <p id="info"> 
+                    Pulse sobre el botón <em>"mostrar aparcamientos"</em> para ver la lista de aparcamientos disponibles en la zona de Madrid.
+                  </p>
+                  <div id="list"></div>
+                  <a class="button" id="ins">mostrar aparcamientos</a>
+                </section>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="instalaciones" class="tab-pane fade">
+        <div id="main">
+          <div class="container">
+
+            <div class="row main-row">
+              <div class="4u 12u(mobile)">
+
+                <section class="left-content">
+                  <h2>Descripción</h2>
+                  <h3 id="n_apar3"></h3>
+                  <div id="desc3"></div>
+                </section>
+
+              </div>
+              <div class="4u 12u(mobile)">
+
+                <section class="left-content">
+                  <h2>Añadir usuarios/usuarios añadidos </h2>
+                  <div id="usuarios" ><p></p></div>
+                </section>
+                <section class="left-content">
+                  <h2>Usuarios del aparcamiento seleccionado</h2>
+                  <div id="mostrar" ><p></p></div>
+                </section>
+
+              </div>
+              <div class="4u 12u(mobile)">
+
+                <section>
+                  <h2>Listado de usuarios Google +</h2>
+                  <p id="info3"> 
+                    Pulse sobre el botón <em>"mostrar usuarios"</em> para ver la lista de usuarios de Google +.
+                  </p>
+                  <div id="list_users"></div>
+                  <a class="button" id="google">mostrar usuarios</a>
+                </section>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div id="footer-wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="6u">
+            <a id="bg" class="button" align="right">Guardar</a>
+            <div id="bot_g">
+             <p>Token de github<input type="text" name="token" id="tokeng" size="36" /></p>
+              <p>Nombre del repositorio<input type="text" name="name" id="nameg" size="36" /></p>
+              <p>Nombre del fichero<input type="text" name="fich" id="fichg" size="36" /></p>
+              <p></p>
+              <a id="guf" class="button" align="right">OK</a>
+            </div>
+          </div>
+          <div class="6u">
+            <a id="bc" class="button" align="right">Cargar</a>
+            <div id="bot_c" >
+              <p>Token de github<input type="text" name="token" id="tokenc" size="36" /></p>
+              <p>Nombre del repositorio<input type="text" name="name" id="namec" size="36" /></p>
+              <p>Nombre del fichero<input type="text" name="fich" id="fichc" size="36" /></p>
+              <p></p>
+              <a id="caf" class="button" align="right">OK</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/skel.min.js"></script>
+  <script src="assets/js/skel-viewport.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+  <script src="js/aparcamientos.js"></script>
+  <script src="js/github.js"></script>
+  <script src="js/WebSocketClient.js"></script>
+  <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+</body>
+</html>
