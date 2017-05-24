@@ -7,4 +7,4 @@ Cuenta de Github: lbajo
 Detalles: Hay que lanzar el WebSocketServer con el puerto 8080  
 
 [Try me](https://lbajo.github.io/Aparcamientos)  
-[Video](https://youtu.be/KXZ1T2fjrbI)  
+[Vídeo](https://youtu.be/KXZ1T2fjrbI)  
